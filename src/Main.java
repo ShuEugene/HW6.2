@@ -28,6 +28,14 @@ public class Main {
                     averageExpenses(dailyExpenses));
         }
 
+//  ДЗ6.2.4
+        {
+            System.out.println();
+            char[] reverseFullName = {'n', 'a', 'v', 'I', ' ', 'v', 'o', 'n', 'a', 'v', 'I'};
+            for (int i = reverseFullName.length - 1; i >= 0; i--)
+                System.out.printf("%s", reverseFullName[i]);
+        }
+
         System.out.println();
     }
 
