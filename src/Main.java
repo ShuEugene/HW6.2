@@ -2,11 +2,18 @@
 public class Main {
     public static void main(String[] args) {
 
+//  ДЗ6.2.1
         System.out.println();
         int dayInMonth = 30,
                 minExpenses = 100_000, maxExpenses = 200_000, rangeExpenses = maxExpenses - minExpenses + 1;
-        int[] daylyExpenses = generateRandomArray(dayInMonth, minExpenses, rangeExpenses);
-        System.out.printf("Сумма трат за месяц составила %s рублей.", calculateSumm(daylyExpenses));
+        int[] dailyExpenses = generateRandomArray(dayInMonth, minExpenses, rangeExpenses);
+        System.out.printf("Сумма трат за месяц составила %s рублей.\n", calculateSumm(dailyExpenses));
+
+//  ДЗ6.2.2
+        System.out.println();
+        System.out.printf("Минимальная сумма затрат за день составила %s рублей.\n" +
+                "Максимальная сумма затрат за день составила %s рублей.",
+                minDaylyExpenses(dailyExpenses), maxDaylyExpenses(dailyExpenses));
 
         System.out.println();
     }
@@ -30,5 +37,17 @@ public class Main {
         int summ = 0;
         for (int currentElement : expensesArray) summ += currentElement;
         return summ;
+    }
+
+    static int minDaylyExpenses(int[] dailyExpenses) {
+        int min = dailyExpenses[0];
+        for (int curentElement : dailyExpenses) if (curentElement < min) min = curentElement;
+        return min;
+    }
+
+    static int maxDaylyExpenses(int[] dailyExpenses) {
+        int max = dailyExpenses[0];
+        for (int curentElement : dailyExpenses) if (curentElement > max) max = curentElement;
+        return max;
     }
 }
