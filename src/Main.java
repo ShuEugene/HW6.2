@@ -3,17 +3,30 @@ public class Main {
     public static void main(String[] args) {
 
 //  ДЗ6.2.1
-        System.out.println();
-        int dayInMonth = 30,
-                minExpenses = 100_000, maxExpenses = 200_000, rangeExpenses = maxExpenses - minExpenses + 1;
-        int[] dailyExpenses = generateRandomArray(dayInMonth, minExpenses, rangeExpenses);
-        System.out.printf("Сумма трат за месяц составила %s рублей.\n", calculateSumm(dailyExpenses));
+        int[] dailyExpenses;
+        {
+            System.out.println();
+            int dayInMonth = 30,
+                    minExpenses = 100_000, maxExpenses = 200_000,
+                    rangeExpenses = maxExpenses - minExpenses + 1;
+            dailyExpenses = generateRandomArray(dayInMonth, minExpenses, rangeExpenses);
+            System.out.printf("Сумма трат за месяц составила %s рублей.\n", calculateSumm(dailyExpenses));
+        }
 
 //  ДЗ6.2.2
-        System.out.println();
-        System.out.printf("Минимальная сумма затрат за день составила %s рублей.\n" +
-                "Максимальная сумма затрат за день составила %s рублей.",
-                minDaylyExpenses(dailyExpenses), maxDaylyExpenses(dailyExpenses));
+        {
+            System.out.println();
+            System.out.printf("Минимальная сумма затрат за день составила %s рублей.\n" +
+                    "Максимальная сумма затрат за день составила %s рублей.\n",
+                    minDaylyExpenses(dailyExpenses), maxDaylyExpenses(dailyExpenses));
+        }
+
+//  ДЗ6.2.3
+        {
+            System.out.println();
+            System.out.printf("Средняя сумма трат за месяц составила %.2f рублей.\n",
+                    averageExpenses(dailyExpenses));
+        }
 
         System.out.println();
     }
@@ -49,5 +62,9 @@ public class Main {
         int max = dailyExpenses[0];
         for (int curentElement : dailyExpenses) if (curentElement > max) max = curentElement;
         return max;
+    }
+
+    static float averageExpenses(int[] dailyExpenses) {
+        return calculateSumm(dailyExpenses) / dailyExpenses.length;
     }
 }
